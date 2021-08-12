@@ -71,7 +71,12 @@ def install_gdl(install_type):
         file_path = os.path.join(base_folder, 'Resources', files_list[i])
         if not file_exists(file_path):
             continue
-        file_content = get(file_url).content
+        file_content = None
+        try:
+            file_content = get(file_url).content
+        except Exception as e:
+            log(f'Ошибка скачивания файла: {e}')
+            continue
         os.rename(file_path, file_path + '.backup')
         backup[file_path] = file_path + '.backup'
         fast_write(file_path, file_content)
