@@ -90,7 +90,7 @@ def install_gdl(install_type):
         except Exception as e:
             log(f'Ошибка создания бэкапа: {e}')
         backup[ext_path] = ext_path + '.backup'
-        log('Скачиваем модиффицированный файл расширений...')
+        log('Скачиваем модифицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
         fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)
     progress(7)
