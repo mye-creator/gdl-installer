@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from time import sleep
 from requests import get
 from PyQt5 import QtWidgets
 from files.installer import Ui_MainWindow
@@ -43,16 +44,17 @@ def install_gdl(install_type):
     fast_write(os.path.join(base_folder, 'ru_ru.json'), get(get_url('gdl_res/ru_ru.json')).content)
     progress(5)
     if install_type == 'default':
-        log(f'Делаем бэкап файла расширений...')
+        log('Делаем бэкап файла расширений...')
         ext_path = os.path.join(base_folder, 'libExtensions.dll')
         os.rename(ext_path, ext_path + '.backup')
         backup[ext_path] = ext_path + '.backup'
-        log(f'Скачиваем модиффицированный файл расширений...')
+        log('Скачиваем модиффицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
     log('Скачиваем dll...')
-    dll_path = os.path.join(
-        base_folder, 'adaf-dll' if install_type == 'default' else install_type, 'GDLocalisation.dll'
-    )
+    dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' else install_type)
+    if not os.path.isdir(dll_dir):
+        os.makedirs(dll_dir)
+    dll_path = os.path.join(dll_dir, 'GDLocalisation.dll')
     fast_write(dll_path, get(get_url('gdl_res/GDLocalisation.dll')).content)
     progress(10)
     log('Скачиваем дезинсталлятор...')
@@ -64,14 +66,15 @@ def install_gdl(install_type):
     log('Получаем список файлов...')
     files_list = get(get_url('gdl_res/res_files.txt')).content.decode().split('\n')
     progress(25)
-    one_progress = 70 / len(files_list)
-    for i in range(len(files_list)):
+    list_len = len(files_list)
+    one_progress = 70 / list_len if list_len > 0 else 70
+    sleep(5)
+    for i in range(list_len):
         log(f'Сохраняем файл {files_list[i]}...')
         file_url = get_url('gd_res/' + files_list[i])
         file_path = os.path.join(base_folder, 'Resources', files_list[i])
-        if not file_exists(file_path):
+        if not file_exists(file_path) or not files_list[i].strip():
             continue
-        file_content = None
         try:
             file_content = get(file_url).content
         except Exception as e:
@@ -82,6 +85,7 @@ def install_gdl(install_type):
         fast_write(file_path, file_content)
         progress(25 + int(one_progress * i))
     log('Сохраняем файлы бэкапа в файл...')
+    sleep(5)
     fast_write(os.path.join(base_folder, 'gdl_unins000.txt'), json.dumps(backup))
     progress(100)
     setup_buttons(4)
