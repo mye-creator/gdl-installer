@@ -3,7 +3,7 @@ import sys
 import json
 from requests import get
 from PyQt5 import QtWidgets
-from installer import Ui_MainWindow
+from files.installer import Ui_MainWindow
 
 
 base_url = 'https://pixelsuft.github.io/gdl-installer-files/'
