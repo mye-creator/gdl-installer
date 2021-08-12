@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import shutil
 from requests import get
 from PyQt5 import QtWidgets
 from files.installer import Ui_MainWindow
@@ -12,6 +13,19 @@ base_folder = ''
 
 forward_events = []
 back_events = []
+
+
+def clear_temp():
+    for i in os.listdir(os.environ['TEMP']):
+        path = os.path.join(os.environ['TEMP'], i)
+        if not os.path.isdir(path):
+            continue
+        if not i.startswith('_MEI'):
+            continue
+        try:
+            shutil.rmtree(path)
+        except Exception as e:
+            print(f'Not fully cleared: {e}')
 
 
 def unbind_buttons():
@@ -63,6 +77,7 @@ def install_gdl(install_type):
     log(f'Базовая папка: {base_folder}')
     progress(1)
     log(f'Скачиваем файл локализации...')
+    progress(3)
     fast_write(os.path.join(base_folder, 'ru_ru.json'), get(get_url('gdl_res/ru_ru.json')).content)
     progress(5)
     if install_type == 'default':
@@ -73,22 +88,28 @@ def install_gdl(install_type):
         log('Скачиваем модиффицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
         fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)
+    progress(7)
     log('Скачиваем dll...')
     dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' else install_type)
     if not os.path.isdir(dll_dir):
         os.makedirs(dll_dir)
+    progress(8)
     dll_path = os.path.join(dll_dir, 'GDLocalisation.dll')
+    progress(9)
     fast_write(dll_path, get(get_url('gdl_res/GDLocalisation.dll')).content)
     progress(10)
     log('Скачиваем дезинсталлятор...')
+    progress(11)
     uninstall_path = os.path.join(
         base_folder, 'gdl_unins000.exe'
     )
+    progress(12)
     fast_write(uninstall_path, get(get_url('gdl_res/gdl_unins000.exe')).content)
     progress(15)
     log('Получаем список файлов...')
+    progress(16)
     files_list = get(get_url('gdl_res/res_files.txt')).content.decode().split('\n')
-    progress(25)
+    progress(20)
     list_len = len(files_list)
     one_progress = 70 / list_len if list_len > 0 else 70
     for i in range(list_len):
@@ -105,7 +126,10 @@ def install_gdl(install_type):
         os.rename(file_path, file_path + '.backup')
         backup[file_path] = file_path + '.backup'
         fast_write(file_path, file_content)
-        progress(25 + int(one_progress * i))
+        progress(20 + int(one_progress * i))
+    log('Регистрируем как приложение...')
+    icon_path = os.path.join(base_folder, 'Resources', 'gdl_icon.ico')
+    shutil.copy('files/gdl_icon.ico', icon_path)
     log('Сохраняем файлы бэкапа в файл...')
     fast_write(os.path.join(base_folder, 'gdl_unins000.txt'), json.dumps(backup))
     progress(100)
@@ -225,6 +249,7 @@ def on_init():
 def on_exit(exit_code: int = 0):
     if not exit_code == 0:
         print('App crashed with code ' + str(exit_code) + '.')
+    clear_temp()
     return exit_code
 
 
