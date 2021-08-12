@@ -484,7 +484,7 @@ color: lime;</string>
      <string>Далее</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="gobackButton">
+   <widget class="QPushButton" name="goBackButton">
     <property name="enabled">
      <bool>false</bool>
     </property>

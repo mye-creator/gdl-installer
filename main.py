@@ -1,7 +1,6 @@
 import os
 import sys
 import json
-from time import sleep
 from requests import get
 from PyQt5 import QtWidgets
 from files.installer import Ui_MainWindow
@@ -9,6 +8,29 @@ from files.installer import Ui_MainWindow
 
 base_url = 'https://pixelsuft.github.io/gdl-installer-files/'
 base_folder = ''
+
+
+forward_events = []
+back_events = []
+
+
+def unbind_buttons():
+    global forward_events, back_events
+    for i in forward_events:
+        ui.goForwardButton.clicked.disconnect(i)
+    for i in back_events:
+        ui.goBackButton.clicked.disconnect(i)
+    forward_events, back_events = [], []
+
+
+def bind_forward(func):
+    forward_events.append(func)
+    ui.goForwardButton.clicked.connect(func)
+
+
+def bind_back(func):
+    back_events.append(func)
+    ui.goBackButton.clicked.connect(func)
 
 
 def log(text_to_log):
@@ -50,6 +72,7 @@ def install_gdl(install_type):
         backup[ext_path] = ext_path + '.backup'
         log('Скачиваем модиффицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
+        fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)
     log('Скачиваем dll...')
     dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' else install_type)
     if not os.path.isdir(dll_dir):
@@ -68,7 +91,6 @@ def install_gdl(install_type):
     progress(25)
     list_len = len(files_list)
     one_progress = 70 / list_len if list_len > 0 else 70
-    sleep(5)
     for i in range(list_len):
         log(f'Сохраняем файл {files_list[i]}...')
         file_url = get_url('gd_res/' + files_list[i])
@@ -85,7 +107,6 @@ def install_gdl(install_type):
         fast_write(file_path, file_content)
         progress(25 + int(one_progress * i))
     log('Сохраняем файлы бэкапа в файл...')
-    sleep(5)
     fast_write(os.path.join(base_folder, 'gdl_unins000.txt'), json.dumps(backup))
     progress(100)
     setup_buttons(4)
@@ -98,32 +119,36 @@ def file_exists(file_path):
 def setup_buttons(tab_id):
     if tab_id == 0:
         ui.tabs.setCurrentIndex(0)
-        ui.gobackButton.setEnabled(False)
+        ui.goBackButton.setEnabled(False)
         ui.goForwardButton.setEnabled(True)
 
-        ui.goForwardButton.clicked.connect(lambda: setup_buttons(1))
+        unbind_buttons()
+        bind_forward(lambda: setup_buttons(1))
     elif tab_id == 1:
         ui.tabs.setCurrentIndex(1)
         ui.folderpathEdit.setText('')
-        ui.gobackButton.setEnabled(True)
+        ui.goBackButton.setEnabled(True)
         ui.goForwardButton.setEnabled(False)
         ui.goForwardButton.setText('Далее')
 
-        ui.gobackButton.clicked.connect(lambda: setup_buttons(0))
-        ui.goForwardButton.clicked.connect(lambda: setup_buttons(2))
+        unbind_buttons()
+        bind_back(lambda: setup_buttons(0))
+        bind_forward(lambda: setup_buttons(2))
     elif tab_id == 2:
         ui.tabs.setCurrentIndex(2)
-        ui.gobackButton.setEnabled(True)
+        ui.goBackButton.setEnabled(True)
         ui.goForwardButton.setEnabled(True)
         ui.goForwardButton.setText('Установить')
 
-        ui.gobackButton.clicked.connect(lambda: setup_buttons(1))
-        ui.goForwardButton.clicked.connect(lambda: setup_buttons(3))
+        unbind_buttons()
+        bind_back(lambda: setup_buttons(1))
+        bind_forward(lambda: setup_buttons(3))
     elif tab_id == 3:
         ui.tabs.setCurrentIndex(3)
-        ui.gobackButton.setEnabled(False)
+        ui.goBackButton.setEnabled(False)
         ui.goForwardButton.setEnabled(False)
         ui.cancelButton.setEnabled(False)
+        unbind_buttons()
         install_type = 'default'
         if ui.loaderType.isChecked():
             install_type = 'adaf-dll'
@@ -134,10 +159,12 @@ def setup_buttons(tab_id):
         install_gdl(install_type)
     elif tab_id == 4:
         ui.tabs.setCurrentIndex(4)
-        ui.gobackButton.setEnabled(False)
+        ui.goBackButton.setEnabled(False)
         ui.goForwardButton.setEnabled(True)
         ui.goForwardButton.setText('Готово')
-        ui.goForwardButton.clicked.connect(lambda: sys.exit(on_exit(0)))
+        unbind_buttons()
+
+        bind_forward(lambda: sys.exit(on_exit(0)))
 
 
 def bind_events():
