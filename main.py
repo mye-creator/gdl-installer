@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import shutil
+import winreg
 from requests import get
 from PyQt5 import QtWidgets
 from files.installer import Ui_MainWindow
@@ -9,6 +10,7 @@ from files.installer import Ui_MainWindow
 
 base_url = 'https://pixelsuft.github.io/gdl-installer-files/'
 base_folder = ''
+REG_PATH = 'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GDLoc'
 
 
 forward_events = []
@@ -102,7 +104,7 @@ def install_gdl(install_type):
     progress(11)
     uninstall_path = os.path.join(
         base_folder, 'gdl_unins000.exe'
-    )
+    ).replace("/", "\\")
     progress(12)
     fast_write(uninstall_path, get(get_url('gdl_res/gdl_unins000.exe')).content)
     progress(15)
@@ -128,8 +130,24 @@ def install_gdl(install_type):
         fast_write(file_path, file_content)
         progress(20 + int(one_progress * i))
     log('Регистрируем как приложение...')
-    icon_path = os.path.join(base_folder, 'Resources', 'gdl_icon.ico')
+    icon_path = os.path.join(base_folder, 'Resources', 'gdl_icon.ico').replace("/", "\\")
     shutil.copy('files/gdl_icon.ico', icon_path)
+
+    reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
+    try:
+        winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, REG_PATH)
+    except WindowsError:
+        pass
+    key = winreg.OpenKey(reg, REG_PATH, 0, winreg.KEY_WRITE)
+
+    winreg.SetValueEx(key, 'DisplayIcon', 0, winreg.REG_SZ, icon_path)
+    winreg.SetValueEx(key, 'DisplayName', 0, winreg.REG_SZ, 'Geometry Dash Localisation')
+    winreg.SetValueEx(key, 'DisplayVersion', 0, winreg.REG_SZ, '1.0.0')
+    winreg.SetValueEx(key, 'UninstallString', 0, winreg.REG_SZ, f'"{uninstall_path}"')
+    winreg.SetValueEx(key, 'Publisher', 0, winreg.REG_SZ, 'The GDL Community')
+    winreg.SetValueEx(key, 'NoModify', 0, winreg.REG_DWORD, 1)
+    winreg.SetValueEx(key, 'NoRepair', 0, winreg.REG_DWORD, 1)
+
     log('Сохраняем файлы бэкапа в файл...')
     fast_write(os.path.join(base_folder, 'gdl_unins000.txt'), json.dumps(backup))
     progress(100)
