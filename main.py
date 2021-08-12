@@ -85,7 +85,10 @@ def install_gdl(install_type):
     if install_type == 'default':
         log('Делаем бэкап файла расширений...')
         ext_path = os.path.join(base_folder, 'libExtensions.dll')
-        os.rename(ext_path, ext_path + '.backup')
+        try:
+            os.rename(ext_path, ext_path + '.backup')
+        except Exception as e:
+            log(f'Ошибка создания бэкапа: {e}')
         backup[ext_path] = ext_path + '.backup'
         log('Скачиваем модиффицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
@@ -125,7 +128,10 @@ def install_gdl(install_type):
         except Exception as e:
             log(f'Ошибка скачивания файла: {e}')
             continue
-        os.rename(file_path, file_path + '.backup')
+        try:
+            os.rename(file_path, file_path + '.backup')
+        except Exception as e:
+            log(f'Ошибка создания бэкапа: {e}')
         backup[file_path] = file_path + '.backup'
         fast_write(file_path, file_content)
         progress(20 + int(one_progress * i))
