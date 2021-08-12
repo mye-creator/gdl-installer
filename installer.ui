@@ -308,7 +308,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Выберите тип установки:</string>
+       <string>Выберите наилучший вариант установки для вас:</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
