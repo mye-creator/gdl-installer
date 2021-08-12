@@ -381,6 +381,9 @@
        <string notr="true">background-color: black;
 color: lime;</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
       <item>
        <property name="text">
         <string>//Логи установки</string>
