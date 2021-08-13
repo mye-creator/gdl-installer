@@ -362,7 +362,7 @@
      </widget>
      <widget class="QListWidget" name="logEdit">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>

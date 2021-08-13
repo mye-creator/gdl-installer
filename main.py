@@ -85,10 +85,8 @@ def install_gdl(install_type):
     if install_type == 'default':
         log('Делаем бэкап файла расширений...')
         ext_path = os.path.join(base_folder, 'libExtensions.dll')
-        try:
+        if not file_exists(ext_path + '.backup'):
             os.rename(ext_path, ext_path + '.backup')
-        except Exception as e:
-            log(f'Ошибка создания бэкапа: {e}')
         backup[ext_path] = ext_path + '.backup'
         log('Скачиваем модифицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
@@ -117,21 +115,31 @@ def install_gdl(install_type):
     progress(20)
     list_len = len(files_list)
     one_progress = 70 / list_len if list_len > 0 else 70
+
+    new_fonts_dir1 = os.path.join(base_folder, 'Resources', 'fonts')
+    new_fonts_dir2 = os.path.join(base_folder, 'Resources', 'bmfont')
+
+    if not os.path.isdir(new_fonts_dir1):
+        os.makedirs(new_fonts_dir1)
+    if not os.path.isdir(new_fonts_dir2):
+        os.makedirs(new_fonts_dir2)
+
     for i in range(list_len):
         log(f'Сохраняем файл {files_list[i]}...')
         file_url = get_url('gd_res/' + files_list[i])
         file_path = os.path.join(base_folder, 'Resources', files_list[i])
-        if not file_exists(file_path) or not files_list[i].strip():
+        if not files_list[i].strip():
             continue
         try:
             file_content = get(file_url).content
         except Exception as e:
             log(f'Ошибка скачивания файла: {e}')
             continue
-        try:
+
+        if file_exists(file_path) and not file_exists(file_path + '.backup'):
+            log(f'Делаем бэкап файла...')
             os.rename(file_path, file_path + '.backup')
-        except Exception as e:
-            log(f'Ошибка создания бэкапа: {e}')
+
         backup[file_path] = file_path + '.backup'
         fast_write(file_path, file_content)
         progress(20 + int(one_progress * i))
