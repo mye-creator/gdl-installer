@@ -35,19 +35,22 @@ def clear_temp():
             continue
         try:
             shutil.rmtree(path)
-        except Exception as e:
-            print(f'Not fully cleared: {e}')
+        except Exception as er:
+            print(f'Not fully cleared: {er}')
+
+
+try:
+    reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
+    key = winreg.OpenKey(reg, REG_PATH, 0, winreg.KEY_READ)
+    os.chdir(os.path.dirname(winreg.QueryValueEx(key, 'UninstallString')[0].replace('"', '')))
+    winreg.DeleteKeyEx(winreg.HKEY_LOCAL_MACHINE, REG_PATH)
+except Exception as e:
+    print(f'Error clearing regedit: {e}')
 
 
 temp_file = open('gdl_unins000.txt', 'rb')
 backup = json.loads(temp_file.read().decode())
 temp_file.close()
-
-try:
-    reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
-    winreg.DeleteKeyEx(winreg.HKEY_LOCAL_MACHINE, REG_PATH)
-except Exception as e:
-    print(f'Error clearing regedit: {e}')
 
 for i in backup:
     if not os.access(i, os.F_OK) or not os.access(backup[i], os.F_OK):
