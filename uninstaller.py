@@ -14,7 +14,7 @@ REG_PATH = 'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GDLoc'
 EXPLORER_PATH = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
 
 
-input('Нажмите ENTER, чтобы дулать GDL (Press ENTER to remove GDL): ')
+input('Нажмите ENTER, чтобы удалить GDL (Press ENTER to remove GDL): ')
 
 
 def explore(path):
