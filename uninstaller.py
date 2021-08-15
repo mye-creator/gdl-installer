@@ -39,7 +39,6 @@ def clear_temp():
             print(f'Not fully cleared: {e}')
 
 
-os.chdir(r'D:\C++\gd-full')
 temp_file = open('gdl_unins000.txt', 'rb')
 backup = json.loads(temp_file.read().decode())
 temp_file.close()
