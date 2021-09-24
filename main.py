@@ -12,7 +12,7 @@ from files.installer import Ui_MainWindow
 base_url = 'https://pixelsuft.github.io/gdl-installer-files/'
 base_folder = ''
 REG_PATH = 'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GDLoc'
-os.chdir(os.path.dirname(__file__))
+# os.chdir(os.path.dirname(__file__))
 
 
 forward_events = []
