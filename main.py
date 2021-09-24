@@ -88,7 +88,7 @@ def fast_write(filename, content):
 
 
 def testo():
-    global progress_to_do, log_to_do
+    global progress_to_do, log_to_do, to_setup
     if to_setup == 1:
         to_setup = 2
         setup_buttons(4)
