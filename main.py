@@ -4,7 +4,8 @@ import json
 import shutil
 import winreg
 from requests import get
-from PyQt5 import QtWidgets
+from threading import Thread
+from PyQt5 import QtWidgets, QtCore
 from files.installer import Ui_MainWindow
 
 
@@ -50,13 +51,25 @@ def bind_back(func):
     ui.goBackButton.clicked.connect(func)
 
 
+log_to_do = None
+progress_to_do = None
+to_setup = 0
+
+
 def log(text_to_log):
-    for i in text_to_log.split('\n'):
-        ui.logEdit.addItem(i)
+    global log_to_do
+    log_to_do = text_to_log.split('\n')
+    while log_to_do:
+        pass
+    #ui.logEdit.addItem(i)
 
 
 def progress(percent):
-    ui.barEdit.setValue(percent)
+    global progress_to_do
+    progress_to_do = percent
+    while progress_to_do:
+        pass
+    #ui.barEdit.setValue(percent)
 
 
 def get_url(url_path):
@@ -74,7 +87,25 @@ def fast_write(filename, content):
         temp_file.close()
 
 
+def testo():
+    global progress_to_do, log_to_do
+    if to_setup == 1:
+        to_setup = 2
+        setup_buttons(4)
+    elif to_setup == 2:
+        return
+    if log_to_do:
+        for i in log_to_do:
+            ui.logEdit.addItem(i)
+            ui.logEdit.scrollToBottom()
+        log_to_do = None
+    if progress_to_do:
+        ui.barEdit.setValue(progress_to_do)
+        progress_to_do = None
+
+
 def install_gdl(install_type):
+    global to_setup
     backup = {}
     log(f'Базовый url: {base_url}')
     log(f'Базовая папка: {base_folder}')
@@ -117,14 +148,6 @@ def install_gdl(install_type):
     list_len = len(files_list)
     one_progress = 70 / list_len if list_len > 0 else 70
 
-    new_fonts_dir1 = os.path.join(base_folder, 'Resources', 'fonts')
-    new_fonts_dir2 = os.path.join(base_folder, 'Resources', 'bmfont')
-
-    if not os.path.isdir(new_fonts_dir1):
-        os.makedirs(new_fonts_dir1)
-    if not os.path.isdir(new_fonts_dir2):
-        os.makedirs(new_fonts_dir2)
-
     for i in range(list_len):
         log(f'Сохраняем файл {files_list[i]}...')
         file_url = get_url('gd_res/' + files_list[i])
@@ -166,7 +189,7 @@ def install_gdl(install_type):
     log('Сохраняем файлы бэкапа в файл...')
     fast_write(os.path.join(base_folder, 'gdl_unins000.txt'), json.dumps(backup))
     progress(100)
-    setup_buttons(4)
+    to_setup = 1
 
 
 def file_exists(file_path):
@@ -213,7 +236,11 @@ def setup_buttons(tab_id):
             install_type = 'mods'
         elif ui.hackType.isChecked():
             install_type = 'extensions'
-        install_gdl(install_type)
+        # install_gdl(install_type)
+        MainWindow.tomer=QtCore.QTimer()
+        MainWindow.tomer.timeout.connect(testo)
+        MainWindow.tomer.start(10)
+        Thread(target=lambda: install_gdl(install_type)).start()
     elif tab_id == 4:
         ui.tabs.setCurrentIndex(4)
         ui.goBackButton.setEnabled(False)
