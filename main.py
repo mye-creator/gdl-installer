@@ -12,7 +12,7 @@ from files.installer import Ui_MainWindow
 base_url = 'https://pixelsuft.github.io/gdl-installer-files/'
 base_folder = ''
 REG_PATH = 'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GDLoc'
-# os.chdir(os.path.dirname(__file__))
+os.chdir(os.path.dirname(__file__))
 
 
 forward_events = []
@@ -89,15 +89,17 @@ def fast_write(filename, content):
 
 def testo():
     global progress_to_do, log_to_do, to_setup
-    if to_setup == 1:
+    if to_setup == 2:
+        return
+    elif to_setup == 1:
         to_setup = 2
         setup_buttons(4)
-    elif to_setup == 2:
-        return
     if log_to_do:
+        need_scroll = ui.logEdit.verticalScrollBar().maximum() == ui.logEdit.verticalScrollBar().value()
         for i in log_to_do:
             ui.logEdit.addItem(i)
-            ui.logEdit.scrollToBottom()
+            if need_scroll:
+                ui.logEdit.scrollToBottom()
         log_to_do = None
     if progress_to_do:
         ui.barEdit.setValue(progress_to_do)

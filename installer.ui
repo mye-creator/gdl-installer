@@ -62,7 +62,7 @@
       <bool>true</bool>
      </property>
      <attribute name="title">
-      <string>Приветсвие</string>
+      <string>Приветствие</string>
      </attribute>
      <widget class="QLabel" name="left_icon">
       <property name="enabled">
