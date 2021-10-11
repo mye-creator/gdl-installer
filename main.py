@@ -125,9 +125,12 @@ def install_gdl(install_type):
         log('Скачиваем модифицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
         fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)
+    if install_type == 'proxy':
+        log('Скачиваем ProxyDLLLoader...')
+        fast_write(os.path.join(base_folder, 'xinput9_1_0.dll'), get(get_url('gdl_res/xinput9_1_0.dll')).content)
     progress(7)
     log('Скачиваем dll...')
-    dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' else install_type)
+    dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' or install_type == 'proxy' else install_type)
     if not os.path.isdir(dll_dir):
         os.makedirs(dll_dir)
     progress(8)
@@ -238,6 +241,8 @@ def setup_buttons(tab_id):
             install_type = 'mods'
         elif ui.hackType.isChecked():
             install_type = 'extensions'
+        elif ui.proxy.isChecked():
+            install_type = 'proxy'
         # install_gdl(install_type)
         MainWindow.tomer=QtCore.QTimer()
         MainWindow.tomer.timeout.connect(testo)
