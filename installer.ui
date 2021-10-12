@@ -49,7 +49,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -311,6 +311,22 @@
        <string>Выберите наилучший вариант установки для вас:</string>
       </property>
       <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="proxy">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>250</y>
+        <width>241</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Установка для ProxyDLLLoader от Adaf</string>
+      </property>
+      <property name="checkable">
        <bool>true</bool>
       </property>
      </widget>
