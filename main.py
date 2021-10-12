@@ -125,9 +125,6 @@ def install_gdl(install_type):
         log('Скачиваем модифицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
         fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)
-    if install_type == 'proxy':
-        log('Скачиваем ProxyDLLLoader...')
-        fast_write(os.path.join(base_folder, 'xinput9_1_0.dll'), get(get_url('gdl_res/xinput9_1_0.dll')).content)
     progress(7)
     log('Скачиваем dll...')
     dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' or install_type == 'proxy' else install_type)
