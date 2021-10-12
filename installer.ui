@@ -244,7 +244,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Стандартная установка</string>
+       <string>Стандартная установка (ProxyDllLoader)</string>
       </property>
       <property name="checked">
        <bool>true</bool>
@@ -255,12 +255,12 @@
        <rect>
         <x>50</x>
         <y>160</y>
-        <width>231</width>
+        <width>301</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Установка для GDDLLLOADER от Adaf</string>
+       <string>Установка для GDDLLLOADER/ProxyDllLoader от Adaf</string>
       </property>
       <property name="checkable">
        <bool>false</bool>

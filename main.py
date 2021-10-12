@@ -117,17 +117,15 @@ def install_gdl(install_type):
     fast_write(os.path.join(base_folder, 'ru_ru.json'), get(get_url('gdl_res/ru_ru.json')).content)
     progress(5)
     if install_type == 'default':
-        log('Делаем бэкап файла расширений...')
+        '''log('Делаем бэкап файла расширений...')
         ext_path = os.path.join(base_folder, 'libExtensions.dll')
-        if not file_exists(ext_path + '.backup'):
-            os.rename(ext_path, ext_path + '.backup')
         backup[ext_path] = ext_path + '.backup'
         log('Скачиваем модифицированный файл расширений...')
         fast_write(ext_path, get(get_url('gdl_res/libExtensions.dll')).content)
-        fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)
+        fast_write(os.path.join(base_folder, 'GDDLLLoader.dll'), get(get_url('gdl_res/GDDLLLoader.dll')).content)'''
     progress(7)
     log('Скачиваем dll...')
-    dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' or install_type == 'proxy' else install_type)
+    dll_dir = os.path.join(base_folder, 'adaf-dll' if install_type == 'default' else install_type)
     if not os.path.isdir(dll_dir):
         os.makedirs(dll_dir)
     progress(8)
