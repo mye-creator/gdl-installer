@@ -240,8 +240,6 @@ def setup_buttons(tab_id):
             install_type = 'mods'
         elif ui.hackType.isChecked():
             install_type = 'extensions'
-        elif ui.proxy.isChecked():
-            install_type = 'proxy'
         # install_gdl(install_type)
         MainWindow.tomer=QtCore.QTimer()
         MainWindow.tomer.timeout.connect(testo)
