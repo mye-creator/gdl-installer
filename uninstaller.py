@@ -49,7 +49,7 @@ except Exception as e:
 
 
 if os.path.isdir('adaf-dll'):
-    if os.access('adaf-dll/GDLocalisation.dll'):
+    if os.access('adaf-dll/GDLocalisation.dll', os.F_OK):
         os.remove('adaf-dll/GDLocalisation.dll')
 
 
