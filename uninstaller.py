@@ -6,6 +6,7 @@ import shutil
 import time
 import ctypes
 import subprocess
+import ctypes
 
 ctypes.windll.kernel32.SetConsoleTitleW('GD Localisation Uninstaller')
 
@@ -14,7 +15,14 @@ REG_PATH = 'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GDLoc'
 EXPLORER_PATH = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
 
 
-input('Нажмите ENTER, чтобы удалить GDL (Press ENTER to remove GDL): ')
+msg_result = ctypes.windll.user32.MessageBoxW(
+    0,
+    'Нажмите ДА, если вы хотите удалить GDL',
+    'Удаление',
+    0x000004 | 0x000020 | 0x000100 | 0x040000
+)
+if not msg_result == 6:
+    sys.exit(0)
 
 
 def explore(path):
@@ -74,7 +82,12 @@ try:
 except Exception as e:
     print(f'Error removing file: {e}')
 
-print('Данный файл удалите вручную... (Remove this file manually...)')
-time.sleep(3)
+
+ctypes.windll.user32.MessageBoxW(
+    0,
+    'Удаление почти завершено!\nВам осталось удалить файл дезинсталлятора\nНажмите OK, чтобы показать его в проводнике',
+    'Удаление почти завершено',
+    0x000000 | 0x000040 | 0x040000
+)
 explore(sys.executable)
 clear_temp()

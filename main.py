@@ -61,7 +61,7 @@ def log(text_to_log):
     log_to_do = text_to_log.split('\n')
     while log_to_do:
         pass
-    #ui.logEdit.addItem(i)
+    # ui.logEdit.addItem(i)
 
 
 def progress(percent):
@@ -69,7 +69,7 @@ def progress(percent):
     progress_to_do = percent
     while progress_to_do:
         pass
-    #ui.barEdit.setValue(percent)
+    # ui.barEdit.setValue(percent)
 
 
 def get_url(url_path):
@@ -278,16 +278,16 @@ def bind_events():
             mega_hack_path = os.path.join(path, 'extensions')
             if os.path.isdir(dll_loader_path):
                 ui.loaderType.setCheckable(True)
-                ui.defaultType.setChecked(False)
-                ui.loaderType.setChecked(True)
+                # ui.defaultType.setChecked(False)
+                # ui.loaderType.setChecked(True)
             if os.path.isdir(mod_loader_path):
                 ui.modType.setCheckable(True)
-                ui.defaultType.setChecked(False)
-                ui.loaderType.setChecked(True)
+                # ui.defaultType.setChecked(False)
+                # ui.loaderType.setChecked(True)
             if os.path.isdir(mega_hack_path):
                 ui.hackType.setCheckable(True)
-                ui.defaultType.setChecked(False)
-                ui.loaderType.setChecked(True)
+                # ui.defaultType.setChecked(False)
+                # ui.loaderType.setChecked(True)
             ui.goForwardButton.setEnabled(True)
             base_folder = path
         else:
