@@ -240,6 +240,8 @@ def setup_buttons(tab_id):
             install_type = 'mods'
         elif ui.hackType.isChecked():
             install_type = 'extensions'
+        elif ui.gdhmType.isChecked():
+            install_type = os.path.join('.GDHM', 'dll')
         # install_gdl(install_type)
         MainWindow.tomer=QtCore.QTimer()
         MainWindow.tomer.timeout.connect(testo)
@@ -276,18 +278,15 @@ def bind_events():
             dll_loader_path = os.path.join(path, 'adaf-dll')
             mod_loader_path = os.path.join(path, 'mods')
             mega_hack_path = os.path.join(path, 'extensions')
+            gdhm_path = os.path.join(path, '.GDHM')
             if os.path.isdir(dll_loader_path):
                 ui.loaderType.setCheckable(True)
-                # ui.defaultType.setChecked(False)
-                # ui.loaderType.setChecked(True)
             if os.path.isdir(mod_loader_path):
                 ui.modType.setCheckable(True)
-                # ui.defaultType.setChecked(False)
-                # ui.loaderType.setChecked(True)
             if os.path.isdir(mega_hack_path):
                 ui.hackType.setCheckable(True)
-                # ui.defaultType.setChecked(False)
-                # ui.loaderType.setChecked(True)
+            if os.path.isdir(gdhm_path):
+                ui.gdhmType.setCheckable(True)
             ui.goForwardButton.setEnabled(True)
             base_folder = path
         else:

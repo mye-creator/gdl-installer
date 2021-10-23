@@ -56,10 +56,16 @@ except Exception as e:
     print(f'Error clearing regedit: {e}')
 
 
-if os.path.isdir('adaf-dll'):
-    if os.access('adaf-dll/GDLocalisation.dll', os.F_OK):
-        os.remove('adaf-dll/GDLocalisation.dll')
+def try_remove_dir(dir_name):
+    if os.path.isdir(dir_name):
+        if os.access(f'{dir_name}/GDLocalisation.dll', os.F_OK):
+            os.remove(f'{dir_name}/GDLocalisation.dll')
 
+
+try_remove_dir('adaf-dll')
+try_remove_dir('mods')
+try_remove_dir('extensions')
+try_remove_dir('.GDHM/dll')
 
 temp_file = open('gdl_unins000.txt', 'rb')
 backup = json.loads(temp_file.read().decode())

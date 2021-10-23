@@ -314,6 +314,22 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QRadioButton" name="gdhmType">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>250</y>
+        <width>251</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Установка для GDHM</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="installTab">
      <property name="enabled">
