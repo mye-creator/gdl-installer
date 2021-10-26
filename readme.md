@@ -32,14 +32,15 @@ Geometry Dash Localisation - мода, который нацелен на пол
 ## Установка 
 #### Windows (7, 8, 8.1, 10, 11):
 1. Скачайте .exe файл из [последнего релиза](https://github.com/Pixelsuft/gdl-installer/releases).
-2. Откройте файл .exe и начните [установку](https://cdn.discordapp.com/attachments/865244119747133473/902147649250136084/113.png).
-3. Нажмите далее и выберите [путь](https://cdn.discordapp.com/attachments/865244119747133473/902147654941827092/114.png), где установлена geometry dash (Допустим E:/steam/steamapps/common/geometry dash)
-4. Выберите, какой [способ установки](https://cdn.discordapp.com/attachments/865244119747133473/902147661518491678/115.png) длл вам нужен (Мне допустим нужен способ установки для adaf-dll).
-5. Нажмите далее и ждите установки, у вас будет такая мини-консоль [(1)](https://cdn.discordapp.com/attachments/865244119747133473/902147668384551022/116.png) [(2)](https://cdn.discordapp.com/attachments/865244119747133473/902147677326831696/117.png).
-6. Если все [установилось успешно](https://cdn.discordapp.com/attachments/865244119747133473/902147686868852777/118.png), то поздравляю, теперь у вас гд на русском языке.
+2. Откройте файл .exe и начните установку <br />![Screenshot1](https://cdn.discordapp.com/attachments/865244119747133473/902147649250136084/113.png).
+3. Нажмите далее и выберите путь, где установлена geometry dash (Допустим E:/steam/steamapps/common/geometry dash) <br />![Screenshot2](https://cdn.discordapp.com/attachments/865244119747133473/902147654941827092/114.png)
+4. Выберите, какой способ установки длл вам нужен (Мне допустим нужен способ установки для adaf-dll). <br />![Screenshot2](https://cdn.discordapp.com/attachments/865244119747133473/902147661518491678/115.png)
+5. Нажмите далее и ждите установки, у вас будет такая мини-консоль. ![Screenshot3](https://cdn.discordapp.com/attachments/865244119747133473/902147668384551022/116.png) ![Screenshot4](https://cdn.discordapp.com/attachments/865244119747133473/902147677326831696/117.png)
+6. Если все установилось успешно, то поздравляю, теперь у вас гд на русском языке. [Screenshot5](https://cdn.discordapp.com/attachments/865244119747133473/902147686868852777/118.png)
 
 #### Mac Os, Linux, Iphone и Android:
 - пока что нет, но скоро будет (Android в приоритете).
+- на линуксе возможно работает.
 
 ## Системные требования:
 1. Системные требования geometry dash.
@@ -68,4 +69,4 @@ Geometry Dash Localisation - мода, который нацелен на пол
 
 ## Лицензия
 
-Лицензировано [MIT License](LICENSE).
+Лицензировано [MIT License](https://github.com/Pixelsuft/gdl-installer/blob/main/LICENSE).
