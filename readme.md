@@ -19,7 +19,7 @@ Geometry Dash Localisation - мода, который нацелен на пол
 Наша команда состоит из 9 человек, которым я хочу выразить свою благодарность :) Без вас ничего бы не получилось!
 - [__Jaan#2897__](https://github.com/JaanDev) - основатель проекта, программист, а также создатель сайта, перерисовщик текстур.
 - [__Myemilia#0101__](https://github.com/mye-creator) - переводчик игры, переводчик руководства по редактору, создатель и владелец [Youtube канала](https://www.youtube.com/channel/UC7oKo9NgkRz39AAz-6Gb78A).
-- __Demi Sans#1337__ - переводчик игровых текстов, редактора.
+- [__Demi Sans#1337__](https://github.com/DemiSans) - переводчик игровых текстов, редактора.
 - [__LukasRadon#7703__](https://youtube.com/channel/UCK2ADfizaRFJzhei_Qubumg) - перерисовщик текстур.
 - [__no name#9890__](https://github.com/Pixelsuft) - создатель установщика.
 - [__Гущин#2002__](https://www.youtube.com/c/%D0%A3%D0%B1%D0%B5%D0%B9%D0%A7%D0%B8%D1%82%D0%B5%D1%80%D0%BE%D0%B2%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB) - программист.
