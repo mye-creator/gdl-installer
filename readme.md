@@ -12,7 +12,7 @@ Geometry Dash Localisation - мода, который нацелен на пол
 
 - Сайт - [Ссылка](https://www.gdlocalisation.gq/)
 - Запасной сайт - [Ссылка](https://gdlocalisation.netlify.app/)
-- Оффициальный дискорд - [Ссылка](https://discord.gg/CScsGU3N6M), [Запасная ссылка](Vh6G9G9Tk2)
+- Оффициальный дискорд - [Ссылка](https://discord.gg/CScsGU3N6M), [Запасная ссылка](https://discord.gg/Vh6G9G9Tk2)
 - Скачать релиз (32 бита) - [Ссылка](https://github.com/Pixelsuft/gdl-installer/releases/latest/download/GDL_Installer.exe)
 
 ## Команда GDL
