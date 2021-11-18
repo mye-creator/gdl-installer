@@ -143,7 +143,7 @@ def install_gdl(install_type):
         base_folder, 'gdl_unins000.exe'
     ).replace("/", "\\")
     progress(12)
-    fast_write(uninstall_path, get(get_url('gdl_res/gdl_unins000_32bit.exe')).content)
+    fast_write(uninstall_path, get(get_url('gdl_res/gdl_unins000.exe')).content)
     progress(15)
     log('Получаем список файлов...')
     progress(16)
