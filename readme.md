@@ -38,7 +38,7 @@ Geometry Dash Localisation - модификация, которая нацеле
 5. Нажмите далее и ждите установки, у вас будет такая мини-консоль. ![Screenshot3](https://cdn.discordapp.com/attachments/865244119747133473/902147668384551022/116.png) ![Screenshot4](https://cdn.discordapp.com/attachments/865244119747133473/902147677326831696/117.png)
 6. Если все установилось успешно, то поздравляю, теперь у вас гд на русском языке. ![Screenshot5](https://cdn.discordapp.com/attachments/865244119747133473/902147686868852777/118.png)
 
-#### Mac Os, Linux, Iphone и Android:
+#### Mac Os, Linux, iPhone и Android:
 - пока что нет, но скоро будет (Android в приоритете).
 - на линуксе возможно работает.
 
