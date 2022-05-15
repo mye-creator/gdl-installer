@@ -18,19 +18,19 @@ Geometry Dash Localisation - модификация, которая нацеле
 ## Команда GDL
 Наша команда состоит из 9 человек, которым я хочу выразить свою благодарность :) Без вас ничего бы не получилось!
 - [__Jaan#2897__](https://github.com/JaanDev) - основатель проекта, программист, а также создатель сайта, перерисовщик текстур.
-- [__Myemilia#0101__](https://github.com/mye-creator) - переводчик игры, переводчик руководства по редактору, создатель и владелец [YouTube канала](https://www.youtube.com/channel/UC7oKo9NgkRz39AAz-6Gb78A).
-- [__Demi Sans#1337__](https://github.com/DemiSans) - переводчик игровых текстов, редактора.
+- [__Mye#2263__](https://github.com/mye-creator) - переводчик игры, переводчик руководства по редактору, создатель и владелец [YouTube канала](https://www.youtube.com/channel/UC7oKo9NgkRz39AAz-6Gb78A).
+- [__Demi Sans#8723__](https://github.com/DemiSans) - переводчик игровых текстов, редактора.
 - [__LukasRadon#7703__](https://youtube.com/channel/UCK2ADfizaRFJzhei_Qubumg) - перерисовщик текстур.
 - [__no name#9890__](https://github.com/Pixelsuft) - создатель установщика.
-- [__Гущин#2002__](https://www.youtube.com/c/%D0%A3%D0%B1%D0%B5%D0%B9%D0%A7%D0%B8%D1%82%D0%B5%D1%80%D0%BE%D0%B2%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB) - программист.
-- [__uulti#9999__](https://www.youtube.com/channel/UCtC8U-f3iRtm601DcfoUEhg) - перерисовщик текстур.
-- [__Махимал#1337__](https://www.youtube.com/channel/UCb92kWSQ-5NWIcTZnxHKAfg) - перерисовщик текстур, дизайнер шрифтов.
-- [__Raelc#9751__](https://github.com/NotRaelc) - помощник с установщиком.
+- [__AndreiGus#5660__](https://www.youtube.com/c/%D0%A3%D0%B1%D0%B5%D0%B9%D0%A7%D0%B8%D1%82%D0%B5%D1%80%D0%BE%D0%B2%D0%9E%D1%80%D0%B8%D0%B3%D0%B8%D0%BD%D0%B0%D0%BB) - программист.
+- [__Uulti#3939__](https://www.youtube.com/channel/UCtC8U-f3iRtm601DcfoUEhg) - перерисовщик текстур.
+- [__Махимал#3389__](https://www.youtube.com/channel/UCb92kWSQ-5NWIcTZnxHKAfg) - перерисовщик текстур, дизайнер шрифтов.
+- [__Raelc#4964__](https://github.com/NotRaelc) - помощник с установщиком.
 
 Отдельное спасибо нескольким людям - [__HJfod__](https://github.com/HJfod), [__Mat__](https://github.com/matcool/), [__QuasarKim__](https://github.com/Quasar-Kim   ), __sleepyut#3321__.
 
 ## Установка 
-#### Windows (7, 8, 8.1, 10, 11):
+#### Windows (7, 8-8.1, 10, 11):
 1. Скачайте .exe файл из [последнего релиза](https://github.com/Pixelsuft/gdl-installer/releases).
 2. Откройте файл .exe и начните установку <br />![Screenshot1](https://cdn.discordapp.com/attachments/865244119747133473/902147649250136084/113.png).
 3. Нажмите далее и выберите путь, где установлена Geometry Dash (Допустим E:/steam/steamapps/common/geometry dash) <br />![Screenshot2](https://cdn.discordapp.com/attachments/865244119747133473/902147654941827092/114.png)
