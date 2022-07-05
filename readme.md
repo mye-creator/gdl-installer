@@ -4,6 +4,7 @@
 
 # GDL
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d01e6748-e4af-4764-a9bb-89136546e5e9/deploy-status)](https://app.netlify.com/sites/gdlocalisation/deploys)
 <a href="https://github.com/Pixelsuft/gdl-installer/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/badge/Лицензия-MIT-brightgreen"></a> </a> <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Pixelsuft/gdl-installer/total?label=%D0%A1%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F"> <img alt="Discord" src="https://img.shields.io/discord/865244119747133470?label=%D0%A7%D0%B0%D1%82%20%D0%B4%D0%B8%D1%81%D0%BA%D0%BE%D1%80%D0%B4%D0%B0"> <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/Pixelsuft/gdl-installer?label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F"> <img alt="Open issues" src="https://img.shields.io/github/issues-raw/Pixelsuft/gdl-installer?label=%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8B%D0%B5%20%D0%B1%D0%B0%D0%B3%D0%B8"> <img alt="Website" src="https://img.shields.io/website?down_color=red&down_message=%D0%9E%D1%84%D1%84%D0%BB%D0%B0%D0%B9%D0%BD&label=%D0%A1%D0%B0%D0%B9%D1%82&up_message=%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&url=https%3A%2F%2Fwww.gdlocalisation.gq%2F">  
 
 Geometry Dash Localisation - модификация, которая нацелена на полный перевод игры Geometry Dash на русский, и, возможно другие языки.
